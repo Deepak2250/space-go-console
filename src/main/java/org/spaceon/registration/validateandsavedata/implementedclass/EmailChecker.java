@@ -7,7 +7,7 @@ public class EmailChecker implements Validator {
     @Override
     public boolean validate(Registration registration) {
         String email = registration.getEmail();
-        if (email.isEmpty() && !email.contains("@") && !email.contains(".com")){
+        if (email==null || email.isEmpty() || !email.contains("@") || !email.contains(".com")){
             return false;
         }
         else {
