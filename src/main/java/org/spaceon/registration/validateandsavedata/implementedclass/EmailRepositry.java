@@ -3,7 +3,7 @@ package org.spaceon.registration.validateandsavedata.implementedclass;
 import org.spaceon.registration.Registration;
 import org.spaceon.registration.validateandsavedata.Validator;
 
-public class EmailChecker implements Validator {
+public class EmailRepositry implements Validator {
     @Override
     public boolean validate(Registration registration) {
         String email = registration.getEmail();
@@ -11,7 +11,6 @@ public class EmailChecker implements Validator {
             return false;
         }
         else {
-            email.toLowerCase();
             return true;
         }
     }
