@@ -1,15 +1,8 @@
 package org.spaceon.main;
 
-import org.spaceon.logout.Logout;
-import org.spaceon.logout.LogoutHandler;
-import org.spaceon.registration.Registration;
-import org.spaceon.registration.validateandsavedata.Repositary;
-import org.spaceon.registration.validateandsavedata.Validator;
-import org.spaceon.registration.validateandsavedata.implementedclass.DataBase;
-import org.spaceon.registration.validateandsavedata.implementedclass.EmailChecker;
+import org.spaceon.apijson.ProjectIdResponseJson;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -33,14 +26,17 @@ public class Main {
         System.out.println("Enter the password");
         registerpassword = scanner.next();
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 
-        getRegistrationData();
-        Validator validator = new EmailChecker();
-        Repositary repositary = new DataBase();
-        Registration registration = new Registration(registerFirstName , registerSecondName , registeremail , registerpassword , validator , repositary);
-        registration.register();
+//        getRegistrationData();
+//        Validator validator = new EmailChecker();
+//        Repositary repositary = new DataBase();
+//        Registration registration = new Registration(registerFirstName , registerSecondName , registeremail , registerpassword , validator , repositary);
+//        registration.register();
+
+        ProjectIdResponseJson projectIdResponse = new ProjectIdResponseJson();
+        projectIdResponse.jsonResponse();
 
     }
 }
