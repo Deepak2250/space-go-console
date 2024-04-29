@@ -1,6 +1,7 @@
 package org.spaceon.registration.validateandsavedata.implementedclass;
 
 import org.spaceon.registration.Registration;
+import org.spaceon.registration.RegistrationService;
 import org.spaceon.registration.validateandsavedata.Validator;
 
 public class EmailRepositry implements Validator {
