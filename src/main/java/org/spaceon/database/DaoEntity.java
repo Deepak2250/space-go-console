@@ -1,11 +1,7 @@
 package org.spaceon.database;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.spaceon.registration.Registration;
-import org.spaceon.registration.RegistrationService;
-import org.spaceon.registration.validateandsavedata.Validator;
+
 
 import javax.persistence.*;
 
@@ -17,17 +13,14 @@ public class DaoEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
-    private String firstName;
-    private String secondName;
-    private String email;
-    private String password;
+    private final String firstName;
+    private final String secondName;
 
-    @Lob
-    protected SessionFactory sessionFactory;
-    @Lob
-    private RegistrationService registrationService;
-    @Lob
-    Validator validator;
+    @Column(unique = true)
+    private final String email;
+    @Column(unique = true)
+    private final String password;
+
 
     public DaoEntity(Registration registration) {
         this.firstName = registration.getFirstName();
