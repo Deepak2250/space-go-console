@@ -6,13 +6,13 @@ import org.spaceon.apiendpoints.ProjectIdEndPoint;
 
 import java.io.IOException;
 
-public class ProjectIdResponseJson implements ResponseFactory{
+public class ProjectIdJson implements JsonResponseFactory {
     @Override
-    public void jsonResponse() throws IOException {
+    public String jsonResponse() throws IOException {
         ApiFetchFactory apiFetchFactory = new ProjectIdEndPoint();
         ApiConnector apiConnector = new ApiConnector(apiFetchFactory);
         apiFetchFactory.endPoint(apiConnector);
         String response = apiConnector.getResponse();
-        System.out.println(response);
+        return response;
     }
 }

@@ -1,29 +1,22 @@
 package org.spaceon.registration;
 
-import org.spaceon.logout.Logout;
-import org.spaceon.logout.LogoutHandler;
-import org.spaceon.registration.validateandsavedata.Repositary;
-import org.spaceon.registration.validateandsavedata.Validator;
-
-import java.util.List;
-
 public class Registration {
 
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private final Validator validator;
-    private final Repositary repositary;
+    private UserInfo userInfo;
 
-    public Registration(String firstName, String lastName, String email, String password, Validator validator, Repositary repositary ) {
+    public Registration(String firstName, String lastName, String email, String password , UserInfo userInfo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.validator = validator;
-        this.repositary = repositary;
+        this.userInfo = userInfo;
     }
+
+    // Getters and setters omitted for brevity
 
     public String getFirstName() {
         return firstName;
@@ -57,19 +50,8 @@ public class Registration {
         this.password = password;
     }
 
-    public void register() {
-        if (validator.validate(this)) {
-            repositary.save(this);
-            System.out.println("The Your Data With this :" + email + " has been Added");
-            System.out.println();
-            System.out.println("Welcome To Space-Go <Click 1 for Using Commands and 0 For Logout");
-            LogoutHandler logoutHandler = new Logout();
-            logoutHandler.logout();
-        }
-        else {
-            System.out.println("The " + email + " email is Wrong !!");
-            return;
-        }
+    // Register using the RegistrationService
+    public void register(RegistrationService registrationService) {
+        registrationService.register(this);
     }
-
 }
