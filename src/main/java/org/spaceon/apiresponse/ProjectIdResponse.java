@@ -14,7 +14,6 @@ public class ProjectIdResponse implements GsonFactoryData {
     private JsonResponseFactory jsonResponseFactory;
 
     public ProjectIdResponse(JsonResponseFactory jsonResponseFactory) {
-
         this.jsonResponseFactory = jsonResponseFactory;
     }
 
@@ -27,8 +26,9 @@ public class ProjectIdResponse implements GsonFactoryData {
         int randomIndex = (int) (Math.floor(Math.random() * projectArray.size()));
 
         JsonObject projetObject = projectArray.get(randomIndex).getAsJsonObject();
-        int projectId = projetObject.get("projectId").getAsInt();
-        projectIdData = projectId;
+        int projectResponse = projetObject.get("projectId").getAsInt();
+        projectIdData = projectResponse;
+
     }
 
     public int getProjectIdData() {

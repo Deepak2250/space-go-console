@@ -23,18 +23,25 @@ public class ApiConnector {
     }
 
     public String fetchApi(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
 
-        try (Response response = okHttpClient.newCall(request).execute()) {
-            if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
+        try {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+
+            try (Response response = okHttpClient.newCall(request).execute()) {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                }
+                System.out.println("It Passed The Api Connector");
+                apiresponse = response.body().string();
+                return apiresponse;
             }
-            System.out.println("It Passed The Api Connector");
-            apiresponse = response.body().string();
-            return apiresponse;
         }
+        catch (NullPointerException e){
+            e.getCause();
+        }
+        return apiresponse;
     }
 
     public String getResponse(){
